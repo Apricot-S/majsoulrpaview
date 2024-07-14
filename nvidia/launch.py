@@ -217,7 +217,7 @@ def _main() -> None:
                 "sed",
                 "-i",
                 "-e",
-                "s/^\\s*Option\\s*\"AllowEmptyInitialConfiguration\"\\s*\"True\"$/\\0\\n    Option         \"AllowExternalGpus\" \"True\"/",
+                's/^\\s*Option\\s*"AllowEmptyInitialConfiguration"\\s*"True"$/\\0\\n    Option         "AllowExternalGpus" "True"/',
                 "/etc/X11/xorg.conf",
             ),
             stdin=subprocess.DEVNULL,
@@ -233,13 +233,13 @@ def _main() -> None:
                 "bash",
                 "-c",
                 (
-                    "echo -e \"#!/usr/bin/env bash\n\n"
+                    'echo -e "#!/usr/bin/env bash\n\n'
                     ". majsoulrpa/.venv/bin/activate\n"
                     "majsoulrpa_remote_browser"
                     f" --remote_host {options.remote_host}"
                     f" --remote_port {options.remote_port}"
                     f" --message_queue_port {options.message_queue_port}"
-                    f" --viewport_height {options.viewport_height}\n\" > .xinitrc"
+                    f' --viewport_height {options.viewport_height}\n" > .xinitrc'
                 ),
             ),
             stdin=subprocess.DEVNULL,
