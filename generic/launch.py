@@ -158,8 +158,8 @@ def _main() -> None:
     container_id = _run_container(options)
 
     with DockerContainer(container_id):
-        result = subprocess.run(
-            options.vnc_password_file.absolute(),  # noqa: S603
+        result = subprocess.run(  # noqa: S603
+            options.vnc_password_file.absolute(),
             stdin=subprocess.DEVNULL,
             capture_output=True,
             check=True,
