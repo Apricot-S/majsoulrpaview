@@ -217,7 +217,7 @@ def _main() -> None:
                 "sed",
                 "-i",
                 "-e",
-                's/^\\s*Option\\s*"AllowEmptyInitialConfiguration"\\s*"True"$/\\0\\n    Option         "AllowExternalGpus" "True"/',
+                's/^\\s*Option\\s*"AllowEmptyInitialConfiguration"\\s*"True"$/\\0\\n    Option         "AllowExternalGpus" "True"/',  # noqa: E501
                 "/etc/X11/xorg.conf",
             ),
             stdin=subprocess.DEVNULL,
