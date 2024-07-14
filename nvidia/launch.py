@@ -57,7 +57,7 @@ def _parse_arguments() -> Namespace:
     )
     parser.add_argument(
         "--remote-host",
-        default='127.0.0.1',
+        default="127.0.0.1",
         metavar="REMOTE_HOST",
     )
     parser.add_argument(
