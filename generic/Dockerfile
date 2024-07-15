@@ -48,16 +48,10 @@ RUN set -euxo pipefail; \
     hash -r; \
     echo 'export PATH="$HOME/.local/bin:$PATH"' >> ~/.bashrc; \
     export PATH="$HOME/.local/bin:$PATH"; \
-    pipx install poetry; \
     hash -r; \
-    poetry config virtualenvs.in-project true; \
-    git clone 'https://github.com/Apricot-S/majsoulrpa.git'; \
-    pushd majsoulrpa; \
-    poetry install; \
+    python3 -m venv .venv; \
     . .venv/bin/activate; \
-    playwright install-deps; \
-    playwright install; \
-    pip install .; \
+    python3 -m pip install git+https://github.com/Apricot-S/majsoulrpa.git; \
+    playwright install --with-deps chromium; \
     deactivate; \
-    popd; \
     mkdir .vnc

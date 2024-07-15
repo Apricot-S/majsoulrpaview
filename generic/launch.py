@@ -258,7 +258,7 @@ def _main() -> None:
                 "bash",
                 "-c",
                 (
-                    ". majsoulrpa/.venv/bin/activate; "
+                    ". .venv/bin/activate; "
                     "majsoulrpa_remote_browser"
                     f" --remote_host {options.remote_host}"
                     f" --remote_port {options.remote_port}"
