@@ -27,12 +27,6 @@ RUN set -euxo pipefail; \
     export PATH="$HOME/.local/share/mise/shims:$PATH"; \
     mise use -g python@latest; \
     hash -r; \
-    python3 -m pip install pipx; \
-    python3 -m pipx ensurepath; \
-    hash -r; \
-    echo 'export PATH="$HOME/.local/bin:$PATH"' >> ~/.bashrc; \
-    export PATH="$HOME/.local/bin:$PATH"; \
-    hash -r; \
     python3 -m venv .venv; \
     . .venv/bin/activate; \
     python3 -m pip install git+https://github.com/Apricot-S/majsoulrpa.git; \
