@@ -10,18 +10,8 @@ RUN set -euxo pipefail; \
       fonts-ipaexfont \
       fonts-ipafont \
       git-core \
-      gnupg \
-      libbz2-dev \
-      libffi-dev \
-      liblzma-dev \
-      libncurses-dev \
-      libreadline-dev \
-      libsqlite3-dev \
-      libssl-dev \
       mesa-utils \
       novnc \
-      python3-pip \
-      wget \
       x11vnc \
       xfonts-base \
       xvfb; \
@@ -31,17 +21,11 @@ RUN set -euxo pipefail; \
 WORKDIR /root
 
 RUN set -euxo pipefail; \
-    curl 'https://pyenv.run' | bash; \
-    echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.bashrc; \
-    echo 'command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.bashrc; \
-    echo 'eval "$(pyenv init -)"' >> ~/.bashrc; \
-    export PYENV_ROOT="$HOME/.pyenv"; \
-    command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"; \
-    eval "$(pyenv init -)"; \
-    hash -r; \
-    PYTHON_LATEST_VERSION=$(pyenv install -l | sed -e 's/^\s*//' | grep -Eo '^[[:digit:]]+\.[[:digit:]]+\.[[:digit:]]+$' | LANG=C sort -Vr | head -n 1); \
-    pyenv install $PYTHON_LATEST_VERSION; \
-    pyenv global $PYTHON_LATEST_VERSION; \
+    curl https://mise.run | bash; \
+    export PATH="$HOME/.local/bin:$PATH"; \
+    echo 'export PATH="$HOME/.local/share/mise/shims:$PATH"' >> ~/.bash_profile; \
+    export PATH="$HOME/.local/share/mise/shims:$PATH"; \
+    mise use -g python@latest; \
     hash -r; \
     python3 -m pip install pipx; \
     python3 -m pipx ensurepath; \
