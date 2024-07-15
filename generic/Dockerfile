@@ -1,4 +1,4 @@
-FROM ubuntu
+FROM ubuntu:jammy
 
 SHELL ["/bin/bash", "-c"]
 
